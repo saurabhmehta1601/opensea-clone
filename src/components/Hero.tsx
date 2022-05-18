@@ -64,7 +64,7 @@ const Wrapper = styled.div`
 `;
 
 const HeroSection = styled.div`
-  ${tw` pt-24 flex-1 pr-24 pl-4`}
+  ${tw` pt-20 flex-1 pr-24 pl-4`}
 `;
 const HeroImage = styled.div`
   ${tw`flex-1 shadow-lg cursor-pointer`}
@@ -74,10 +74,10 @@ const HeroImage = styled.div`
 `;
 
 const Heading = styled.div`
-  ${tw`text-5xl mb-8 font-semibold`}
+  ${tw`text-5xl mb-8 font-semibold leading-tight`}
 `;
 const SubHeading = styled.div`
-  ${tw`text-3xl mb-8 font-thin text-[#3f3f3f] pr-36`}
+  ${tw`text-2xl mb-12 font-normal text-[#3f3f3f] pr-40 leading-snug`}
 `;
 
 const ButtonGroup = styled.div`
