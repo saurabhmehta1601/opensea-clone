@@ -66,7 +66,7 @@ const NavLinks = styled.div`
   }
 `;
 const NavTextLinks = styled(NavLinks)`
-  ${tw`ml-8 col-gap-12 mr-6 text-lg`}
+  ${tw`ml-8 col-gap-12 mr-6 text-lg font-semibold`}
 `;
 const NavIconLinks = styled(NavLinks)`
   ${tw`ml-2 col-gap-6 mr-6`}
