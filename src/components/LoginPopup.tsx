@@ -28,20 +28,33 @@ export const LoginPopup = (props: IProps) => {
           <p>Connected</p> <p className="address">{address}</p>
         </ConnectedWallet>
       ) : (
-        <WalletConnections>
-          <Button onClick={connectWithMetamask}>Metamask</Button>
-          <Button onClick={connectWithWalletConnect}>Walletconnect</Button>
-          <Button onClick={connectWithCoinbaseWallet}>Coinbase</Button>
-        </WalletConnections>
+        <>
+          <WalletConnections>
+            <div>Choose your wallet </div>
+            <WalletConnectButton onClick={connectWithMetamask}>
+              Metamask
+            </WalletConnectButton>
+            <WalletConnectButton onClick={connectWithWalletConnect}>
+              Walletconnect
+            </WalletConnectButton>
+            <WalletConnectButton onClick={connectWithCoinbaseWallet}>
+              Coinbase
+            </WalletConnectButton>
+          </WalletConnections>
+        </>
       )}
     </StyledPopup>
   );
 };
 
 const StyledPopup = styled(Popup)``;
-const Button = styled.div`
-  ${tw`   py-1 rounded-md cursor-pointer flex items-center bg-gray-800 text-white justify-center col-gap-8`}
-  border: 1px solid #383838;
+const WalletConnectButton = styled.div`
+  ${tw`py-2 rounded-md cursor-pointer flex items-center bg-gray-800 text-white justify-center col-gap-8`}
+  border: 2px solid rgba(53, 56, 64, 0.1);
+  &:hover {
+    ${tw`bg-white text-gray-800 `}
+    border: 2px solid rgba(53, 56, 64, 0.1);
+  }
 `;
 const ConnectedWallet = styled.div`
   ${tw`text-center `}
@@ -50,6 +63,11 @@ const ConnectedWallet = styled.div`
   }
 `;
 
-const WalletConnections = styled.div`
-  ${tw`px-24 py-8 flex flex-col row-gap-4`}
+const WalletConnections = styled.p`
+  ${tw`px-24 py-8 flex flex-col  text-center`}
+  div {
+    ${tw`mb-6 font-bold text-xl`}
+    &:hover {
+    }
+  }
 `;
