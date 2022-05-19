@@ -6,6 +6,7 @@ import tw from "twin.macro";
 import { AiOutlineSearch } from "react-icons/ai";
 import { MdOutlineAccountBalanceWallet } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
+import { LoginPopup } from "./LoginPopup";
 
 export const Header = () => {
   return (
@@ -27,7 +28,13 @@ export const Header = () => {
         <div>Create</div>
       </NavTextLinks>
       <NavIconLinks>
-        <CgProfile />
+        <LoginPopup
+          trigger={
+            <button>
+              <CgProfile />
+            </button>
+          }
+        />
         <MdOutlineAccountBalanceWallet />
       </NavIconLinks>
     </StyledHeader>
@@ -68,9 +75,15 @@ const NavLinks = styled.div`
 const NavTextLinks = styled(NavLinks)`
   ${tw`ml-8 col-gap-12 mr-6 text-lg font-semibold`}
 `;
+
 const NavIconLinks = styled(NavLinks)`
   ${tw`ml-2 col-gap-6 mr-6`}
   * {
     ${tw`text-4xl ml-3 col-gap-2 text-[rgba(53, 56, 64, 0.7)]`}
+  }
+
+  button {
+    background: none;
+    border: none;
   }
 `;
