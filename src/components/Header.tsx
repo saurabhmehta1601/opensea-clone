@@ -11,18 +11,20 @@ import { LoginPopup } from "./LoginPopup";
 export const Header = () => {
   return (
     <StyledHeader>
-      <StyledLogoContainer>
-        <Link href="/">
+      <Link href="/">
+        <StyledLogoContainer>
           <Image width={45} height={45} src="/opensea.png" />
-        </Link>
-        <StyledLogoText>OpenSea</StyledLogoText>
-      </StyledLogoContainer>
+          <StyledLogoText>OpenSea</StyledLogoText>
+        </StyledLogoContainer>
+      </Link>
       <StyledSearchBar>
         <AiOutlineSearch className="searchIcon" />
         <input placeholder="Search items , collections and accounts " />
       </StyledSearchBar>
       <NavTextLinks>
-        <div>Explore</div>
+        <div>
+          <Link href="explore-collections">Explore</Link>
+        </div>
         <div>Stats</div>
         <div>Resources</div>
         <div>Create</div>
