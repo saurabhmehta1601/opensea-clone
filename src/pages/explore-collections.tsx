@@ -25,11 +25,11 @@ const Heading = styled.div`
 
 export const getServerSideProps = async () => {
   const query = `* [ _type == "marketItems"] {
-  _id , title , description
+  _id , title , description , contractAddress
 }`;
   let allNFTs = [];
   try {
-    allNFTs = await sanityClient.fetch(query);
+    allNFTs = await sanityClient().fetch(query)[0];
   } catch (error) {
     allNFTs = [];
   }

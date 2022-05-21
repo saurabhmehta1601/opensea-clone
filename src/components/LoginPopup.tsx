@@ -1,5 +1,5 @@
 import "reactjs-popup/dist/index.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Popup from "reactjs-popup";
 import styled from "styled-components";
 import tw from "twin.macro";
@@ -9,20 +9,35 @@ import {
   useMetamask,
   useWalletConnect,
 } from "@thirdweb-dev/react";
-import Image from "next/image";
+import { sanityClient } from "../sanityClient";
 
-interface IProps {
-  trigger: JSX.Element;
-}
-
-export const LoginPopup = (props: IProps) => {
+export const LoginPopup = ({ trigger }) => {
+  const [token, setToken] = useState("");
   const address = useAddress();
   const connectWithMetamask = useMetamask();
   const connectWithWalletConnect = useWalletConnect();
   const connectWithCoinbaseWallet = useCoinbaseWallet();
 
+  useEffect(() => {
+    (async () => {
+      if (!token) {
+        const result = await fetch("/api/get-sanity-token").then((res) =>
+          res.json()
+        );
+        setToken(result.token);
+      }
+      if (address && token) {
+        sanityClient(token).createIfNotExists({
+          _id: address,
+          _type: "users",
+          walletAddress: address,
+        });
+      }
+    })();
+  }, [address]);
+
   return (
-    <StyledPopup modal={true} trigger={props.trigger} position="bottom center">
+    <StyledPopup modal={true} trigger={trigger} position="bottom center">
       {address ? (
         <ConnectedWallet>
           <p>Connected</p> <p className="address">{address}</p>
@@ -63,7 +78,7 @@ const ConnectedWallet = styled.div`
   }
 `;
 
-const WalletConnections = styled.p`
+const WalletConnections = styled.div`
   ${tw`px-24 py-8 flex flex-col  text-center`}
   div {
     ${tw`mb-6 font-bold text-xl`}

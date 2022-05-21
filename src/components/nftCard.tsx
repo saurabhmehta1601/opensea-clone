@@ -2,11 +2,22 @@ import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 
-export const NFTCard = ({ nft }) => {
+interface IProps {
+  nft: {
+    contractAddress: string;
+    title: string;
+    description: string;
+    banner: string;
+  };
+}
+
+export const NFTCard = ({ nft }: IProps) => {
   return (
     <Container>
       <div className="banner">
         <img src={nft.banner} alt="" />
+        <div>{nft.title}</div>
+        <div>by {nft.title}</div>
       </div>
     </Container>
   );
