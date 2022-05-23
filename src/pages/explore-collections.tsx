@@ -2,7 +2,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import { CollectionCard } from "../components/CollectionCard";
 import { Header } from "../components/Header";
-import { sanityClient } from "../sanityClient";
+import { getCollections } from "../utils/sanity";
 
 const ExploreCollections = ({ allCollections }) => {
   console.log(allCollections);
@@ -28,20 +28,7 @@ const Heading = styled.div`
 `;
 
 export const getServerSideProps = async () => {
-  const query = `* [ _type == "marketItems"] {
-  _id , title , description , contractAddress,
-  "ownerImage": profileImage.asset->url,
-  "bannerImage": bannerImage.asset->url,
-  volumeTraded,
-  "createrName": createdBy -> userName,
-  "createrAddress": createdBy -> walletAddress
-}`;
-  let allCollections = [];
-  try {
-    allCollections = await sanityClient().fetch(query);
-  } catch (error) {
-    allCollections = [];
-  }
+  const allCollections = await getCollections();
   return {
     props: {
       allCollections,

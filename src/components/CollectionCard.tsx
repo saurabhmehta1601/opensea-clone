@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
@@ -15,9 +16,13 @@ interface IProps {
 }
 
 export const CollectionCard = ({ nft }: IProps) => {
+  const router = useRouter();
   console.log("nft props ", nft);
+  const navigateToCollection = () => {
+    router.push(`collections/${nft.contractAddress}`);
+  };
   return (
-    <Wrapper>
+    <Wrapper onClick={navigateToCollection}>
       <Card>
         <BannerContainer bgImg={nft.bannerImage} ownerImg={nft.ownerImage}>
           <div className="ownerImg" />
@@ -62,6 +67,7 @@ const BannerContainer = styled.div<{ bgImg: string; ownerImg: string }>`
 `;
 
 const NftDetails = styled.div`
+  ${tw`pb-6`}
   .title {
     ${tw`font-semibold`}
   }
