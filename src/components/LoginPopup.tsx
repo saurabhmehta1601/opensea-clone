@@ -30,6 +30,7 @@ export const LoginPopup = ({ trigger }) => {
         sanityClient(token).createIfNotExists({
           _id: address,
           _type: "users",
+          userName: "Unnamed",
           walletAddress: address,
         });
       }
