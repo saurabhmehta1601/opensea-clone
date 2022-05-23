@@ -1,18 +1,22 @@
-import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
+import { CollectionCard } from "../components/CollectionCard";
 import { Header } from "../components/Header";
-import { NFTCard } from "../components/nftCard";
 import { sanityClient } from "../sanityClient";
 
-const ExploreCollections = ({ allNFTs }) => {
+const ExploreCollections = ({ allCollections }) => {
+  console.log(allCollections);
+
   return (
     <>
       <Header />
       <Heading>explore collections</Heading>
-      {allNFTs.map((nft) => (
-        <NFTCard nft={nft} />
-      ))}
+
+      <CollectionsContainer>
+        {allCollections.map((nft) => (
+          <CollectionCard key={nft.id} nft={nft} />
+        ))}
+      </CollectionsContainer>
     </>
   );
 };
@@ -25,17 +29,26 @@ const Heading = styled.div`
 
 export const getServerSideProps = async () => {
   const query = `* [ _type == "marketItems"] {
-  _id , title , description , contractAddress
+  _id , title , description , contractAddress,
+  "imageUrl": profileImage.asset->url,
+  "bannerImageUrl": bannerImage.asset->url,
+  volumeTraded,
+  "createrName": createdBy -> userName,
+  "createrAddress": createdBy -> walletAddress
 }`;
-  let allNFTs = [];
+  let allCollections = [];
   try {
-    allNFTs = await sanityClient().fetch(query)[0];
+    allCollections = await sanityClient().fetch(query);
   } catch (error) {
-    allNFTs = [];
+    allCollections = [];
   }
   return {
     props: {
-      allNFTs,
+      allCollections,
     },
   };
 };
+
+const CollectionsContainer = styled.div`
+  ${tw`flex p-4  `}
+`;

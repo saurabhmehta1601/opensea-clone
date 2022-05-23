@@ -3,6 +3,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import Link from "next/link";
 import { AiFillPlayCircle, AiOutlineInfoCircle } from "react-icons/ai";
+import { Card } from "./Card";
 
 export const Hero = () => {
   return (
@@ -29,7 +30,7 @@ export const Hero = () => {
         </LearnMore>
       </HeroSection>
       <Link href="https://opensea.io/assets/0x495f947276749ce646f68ac8c248420045cb7b5e/43764478945937012780943891887422793422743083224985803407021289801920412647437">
-        <HeroImage>
+        <Card>
           <img
             src="https://lh3.googleusercontent.com/MeGC7qi_1QJZqAHWLi78jBT8hQTFKbs_wJlUgQ0wj32EycUTmQShoyzMfeV_ydhTSLLZYYm3JrVM4ETnpDn3FXgQ_tkrI3k7TbgrGA=s550"
             alt="nft"
@@ -51,7 +52,7 @@ export const Hero = () => {
               <AiOutlineInfoCircle className="infoLogo" />
             </div>
           </ImageInfo>
-        </HeroImage>
+        </Card>
       </Link>
     </Wrapper>
   );
@@ -65,12 +66,6 @@ const Wrapper = styled.div`
 
 const HeroSection = styled.div`
   ${tw` pt-20 flex-1 pr-24 pl-4`}
-`;
-const HeroImage = styled.div`
-  ${tw`flex-1 shadow-lg cursor-pointer`}
-  img {
-    ${tw`rounded-t-lg w-full `}
-  }
 `;
 
 const Heading = styled.div`
