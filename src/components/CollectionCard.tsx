@@ -35,10 +35,10 @@ export const CollectionCard = ({ nft }: IProps) => {
 };
 
 const Wrapper = styled.div`
-  ${tw`rounded-lg overflow-hidden text-center`}
+  ${tw`rounded-lg overflow-hidden text-center hover:shadow-xl`}
 `;
 const BannerContainer = styled.div<{ bgImg: string; ownerImg: string }>`
-  ${tw`relative`}
+  ${tw`relative `}
   --banner-height: 30vh;
   --owner-logo-size: 9vh;
 
