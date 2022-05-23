@@ -30,8 +30,8 @@ const Heading = styled.div`
 export const getServerSideProps = async () => {
   const query = `* [ _type == "marketItems"] {
   _id , title , description , contractAddress,
-  "imageUrl": profileImage.asset->url,
-  "bannerImageUrl": bannerImage.asset->url,
+  "ownerImage": profileImage.asset->url,
+  "bannerImage": bannerImage.asset->url,
   volumeTraded,
   "createrName": createdBy -> userName,
   "createrAddress": createdBy -> walletAddress
@@ -50,5 +50,5 @@ export const getServerSideProps = async () => {
 };
 
 const CollectionsContainer = styled.div`
-  ${tw`flex p-4  `}
+  ${tw`flex p-8 grid grid-cols-1 lg:grid-cols-2`}
 `;
