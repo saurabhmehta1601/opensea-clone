@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import tw from "twin.macro";
 import { CollectionCard } from "../components/CollectionCard";
-import { Header } from "../components/Header";
 import { getCollections } from "../utils/sanity";
 
 const ExploreCollections = ({ allCollections }) => {
@@ -9,7 +8,6 @@ const ExploreCollections = ({ allCollections }) => {
 
   return (
     <>
-      <Header />
       <Heading>explore collections</Heading>
 
       <CollectionsContainer>
