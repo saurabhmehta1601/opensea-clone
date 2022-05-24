@@ -10,22 +10,24 @@ interface IProps {
     title: string;
     description: string;
     bannerImage: string;
-    ownerImage: string;
+    collectionLogo: string;
     createrName: string;
   };
 }
 
 export const CollectionCard = ({ nft }: IProps) => {
   const router = useRouter();
-  console.log("nft props ", nft);
   const navigateToCollection = () => {
     router.push(`collections/${nft.contractAddress}`);
   };
   return (
     <Wrapper onClick={navigateToCollection}>
       <Card>
-        <BannerContainer bgImg={nft.bannerImage} ownerImg={nft.ownerImage}>
-          <div className="ownerImg" />
+        <BannerContainer
+          bgImg={nft.bannerImage}
+          collectionLogo={nft.collectionLogo}
+        >
+          <div className="collectionLogo" />
         </BannerContainer>
         <NftDetails>
           <div className="title">{nft.title}</div>
@@ -42,22 +44,22 @@ export const CollectionCard = ({ nft }: IProps) => {
 const Wrapper = styled.div`
   ${tw`rounded-lg overflow-hidden text-center hover:shadow-xl`}
 `;
-const BannerContainer = styled.div<{ bgImg: string; ownerImg: string }>`
+const BannerContainer = styled.div<{ bgImg: string; collectionLogo: string }>`
   ${tw`relative `}
   --banner-height: 30vh;
-  --owner-logo-size: 9vh;
+  --collection-logo-size: 9vh;
 
   height: var(--banner-height);
   background: url(${(props) => props.bgImg});
   background-size: cover;
-  margin-bottom: calc(var(--owner-logo-size) - 2.5vh);
-  .ownerImg {
+  margin-bottom: calc(var(--collection-logo-size) - 2.5vh);
+  .collectionLogo {
     ${tw`absolute shadow-lg`}
-    height: var(--owner-logo-size);
-    width: var(--owner-logo-size);
-    top: calc(100% - var(--owner-logo-size) / 2);
-    left: calc(50% - var(--owner-logo-size) / 2);
-    background: url(${(props) => props.ownerImg});
+    height: var(--collection-logo-size);
+    width: var(--collection-logo-size);
+    top: calc(100% - var(--collection-logo-size) / 2);
+    left: calc(50% - var(--collection-logo-size) / 2);
+    background: url(${(props) => props.collectionLogo});
     background-size: 118%;
     background-position: center;
     border: 2.5px solid white;

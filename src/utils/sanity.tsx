@@ -5,7 +5,7 @@ export const getCollections = async (contractAddress?: string) => {
   if (typeof contractAddress === "string") {
     query = `* [ _type == "marketItems" && contractAddress == "${contractAddress}"] {
       _id , title , description , contractAddress,
-      "ownerImage": profileImage.asset->url,
+      "collectionLogo": collectionLogo.asset->url,
       "bannerImage": bannerImage.asset->url,
       volumeTraded,
       "createrName": createdBy -> userName,
@@ -14,7 +14,7 @@ export const getCollections = async (contractAddress?: string) => {
   } else {
     query = `* [ _type == "marketItems" ] {
       _id , title , description , contractAddress,
-      "ownerImage": profileImage.asset->url,
+      "collectionLogo": collectionLogo.asset->url,
       "bannerImage": bannerImage.asset->url,
       volumeTraded,
       "createrName": createdBy -> userName,
