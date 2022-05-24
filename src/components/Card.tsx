@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
 
-export const Card = ({ children }) => {
-  return <Wrapper>{children}</Wrapper>;
+export const Card = (props) => {
+  return <Wrapper {...props}>{props.children}</Wrapper>;
 };
 
 const Wrapper = styled.div`
