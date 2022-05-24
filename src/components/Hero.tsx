@@ -15,8 +15,7 @@ export const Hero = () => {
         </SubHeading>
         <ButtonGroup>
           <SolidButton
-            target="_blank"
-            href="https://opensea.io/explore-collections"
+            href="/explore-collections"
           >
             Explore
           </SolidButton>

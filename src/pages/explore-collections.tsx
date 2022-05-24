@@ -4,7 +4,6 @@ import { CollectionCard } from "../components/CollectionCard";
 import { getCollections } from "../utils/sanity";
 
 const ExploreCollections = ({ allCollections }) => {
-  console.log(allCollections);
 
   return (
     <>

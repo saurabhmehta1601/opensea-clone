@@ -5,6 +5,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import { Card } from "../../components/Card";
 import { getCollections } from "../../utils/sanity";
+import { MdGridOn } from "react-icons/md";
 
 const statsData = [
   {
@@ -81,6 +82,29 @@ const Collection = ({
             </Card>
           ))}
         </div>
+        <div className="itemTitle">
+          <MdGridOn className="gridIcon" />
+          Items
+        </div>
+        <CollectionList>
+          {collectionItems.map((item) => (
+            <Card className="collectionItem">
+              <div className="itemImage">
+                <img src={item.image} alt="" />
+              </div>
+              <div className="itemDetails">
+                <div className="line1">
+                  <div>{title}</div>
+                  <div>Price</div>
+                </div>
+                <div className="line2">
+                  <div>{item.name}</div>
+                  <div></div>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </CollectionList>
       </CollectionDetails>
     </>
   );
@@ -138,7 +162,7 @@ const CollectionDetails = styled.div`
     }
   }
   .stats {
-    ${tw`flex rounded-lg mb-4 mx-auto  max-w-[50%]`}/* border: 2.5px solid #cfcdcd; */
+    ${tw`flex rounded-lg mb-4 mx-auto  max-w-[50%]`}
   }
   .card {
     ${tw`flex-1 p-4 rounded-none `}
@@ -155,11 +179,36 @@ const CollectionDetails = styled.div`
       ${tw` -ml-10  relative top-1`}
       height: 24px;
       img {
-        ${tw` self-center`}
+        ${tw`self-center`}
       }
     }
   }
   .label {
     ${tw`text-gray-400`}
   }
+  /* .collectionItem {
+    ${tw`px-3`}
+  } */
+  .itemTitle {
+    ${tw`flex justify-center items-center gap-4 text-gray-700 text-lg font-semibold mb-6`}
+    .gridIcon {
+      ${tw`text-2xl`}
+    }
+  }
+  .itemDetails {
+    ${tw`px-3`}
+    .line1,.line2 {
+      ${tw`flex justify-between text-xs font-semibold`}
+    }
+    .line1 {
+      ${tw`text-gray-500`}
+    }
+    .line2 {
+      ${tw`mb-4`}
+    }
+  }
+`;
+
+const CollectionList = styled.div`
+  ${tw`flex justify-center `}
 `;

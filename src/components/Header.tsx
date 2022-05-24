@@ -23,7 +23,7 @@ export const Header = () => {
       </StyledSearchBar>
       <NavTextLinks>
         <div>
-          <Link href="explore-collections">Explore</Link>
+          <Link href="/explore-collections">Explore</Link>
         </div>
         <div>Stats</div>
         <div>Resources</div>
